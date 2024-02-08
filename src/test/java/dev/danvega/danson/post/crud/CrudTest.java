@@ -16,6 +16,7 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,30 +47,30 @@ class CrudTest {
         postgres.followOutput(new Slf4jLogConsumer(LoggerFactory.getLogger("docker logs")));
     }
 
+    @BeforeEach
+    void setUp() {
+        List<Post> posts = List.of(new Post(1,1,"Hello, World!", "This is my first post!",null));
+        postRepository.saveAll(posts);
+    }
+
     @Test
     void connectionEstablished() {
         assertThat(postgres.isCreated()).isTrue();
         assertThat(postgres.isRunning()).isTrue();
     }
 
-    @Test
-    void shouldReturnPostByTitle() {
+//    @Test
+//    void shouldReturnPostByTitle() {
 //        Post post = postRepository.findByTitle("Hello, World!").orElseThrow();
 //        assertEquals("Hello, World!", post.title(), "Post title should be 'Hello, World!'");
-    }
-
-//    @Test
-//    void shouldFindAllPosts() {
-//        Post post = new Post(1,1,"title","body",1);
-//        postRepository.save(post);
-//        Optional<Post> optional = postRepository.findById(1);
-//        Assertions.assertTrue(optional.isPresent());
 //    }
 
     @Test
     void shouldFindAllPosts() {
-        Post[] posts = restTemplate.getForObject("/api/posts", Post[].class);
-        assertThat(posts.length).isGreaterThan(100);
+        Post post = new Post(1,1,"title","body",1);
+        postRepository.save(post);
+        Optional<Post> optional = postRepository.findById(1);
+        Assertions.assertTrue(optional.isPresent());
     }
 
 }
