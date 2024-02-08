@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +26,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Testcontainers
-
 // 1- si je mets cette annotation, alors
 //@SpringBootTest
 // 2- si je mets cell-ci, tout est OK
 @DataJdbcTest
-
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 // TODO pourquoi cette annotation ci-dessous.. ?
 // @Transactional
@@ -44,8 +43,6 @@ class CrudTest2 {
     @Container
     @ServiceConnection
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.0");
-
-
 
     /* système de log 1
      */
@@ -65,8 +62,6 @@ class CrudTest2 {
         List<Post> posts = List.of(new Post(1,1,"Hello, World!", "This is my first post!",null));
         postRepository.saveAll(posts);
     }
-
-
 
     @Test
     void shouldReturnPostByTitle() {
