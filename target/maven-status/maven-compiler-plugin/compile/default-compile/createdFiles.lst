@@ -1,7 +1,7 @@
+com/coussy/testcontainer/Posts.class
 dev/danvega/danson/Application.class
-dev/danvega/danson/post/PostDataLoader.class
-dev/danvega/danson/post/PostNotFoundException.class
-dev/danvega/danson/post/PostController.class
-dev/danvega/danson/post/Posts.class
-dev/danvega/danson/post/PostRepository.class
-dev/danvega/danson/post/Post.class
+com/coussy/testcontainer/PostRepository.class
+com/coussy/testcontainer/PostController.class
+com/coussy/testcontainer/PostNotFoundException.class
+com/coussy/testcontainer/Post.class
+com/coussy/testcontainer/PostDataLoader.class
