@@ -24,9 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // 5- the 'post' table will be created by the 'table-creation.sql' while docker initialization
 
 @Testcontainers
-@DataJdbcTest(properties = {
-        "spring.sql.init.mode=never"
-})
+@DataJdbcTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class TableCreatedByDockerScriptTest {
 
