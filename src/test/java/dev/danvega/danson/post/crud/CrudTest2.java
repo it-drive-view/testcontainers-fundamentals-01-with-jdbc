@@ -26,13 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Testcontainers
-// 1- si je mets cette annotation, alors
-//@SpringBootTest
-// 2- si je mets cell-ci, tout est OK
 @DataJdbcTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-// TODO pourquoi cette annotation ci-dessous.. ?
-// @Transactional
 class CrudTest2 {
 
     @Autowired
@@ -71,10 +66,10 @@ class CrudTest2 {
 
     @Test
     void shouldFindAllPosts() {
-//        Post post = new Post(1,1,"title","body",1);
-//        postRepository.save(post);
-//        Optional<Post> optional = postRepository.findById(1);
-//        Assertions.assertTrue(optional.isPresent());
+        Post post = new Post(2,1,"title","body",1);
+        postRepository.save(post);
+        Optional<Post> optional = postRepository.findById(1);
+        Assertions.assertTrue(optional.isPresent());
     }
 
 }
