@@ -1,5 +1,5 @@
 com/coussy/testcontainer/Posts.class
-dev/danvega/danson/Application.class
+com/coussy/testcontainer/Application.class
 com/coussy/testcontainer/PostRepository.class
 com/coussy/testcontainer/PostController.class
 com/coussy/testcontainer/PostNotFoundException.class
